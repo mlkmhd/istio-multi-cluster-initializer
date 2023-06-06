@@ -1,0 +1,29 @@
+apiVersion: install.istio.io/v1alpha1
+metadata:
+  name: istio-controlplane
+  namespace: istio-system
+kind: IstioOperator
+spec:
+  hub: novinrepo:8082/docker/istio
+  profile: demo
+  meshConfig:
+    enablePrometheusMerge: false
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
+        ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+  components:
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: false
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: false
+  values:
+    sidecarInjectorWebhook:
+      rewriteAppHTTPProbe: false
+    global:
+      meshID: usmesh
+      multiCluster:
+        clusterName: cluster-${CLUSTER_INDEX}
+      network: network-${CLUSTER_INDEX}
