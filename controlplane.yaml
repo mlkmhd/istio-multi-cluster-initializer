@@ -4,7 +4,6 @@ metadata:
   namespace: istio-system
 kind: IstioOperator
 spec:
-  hub: novinrepo:8082/docker/istio
   profile: demo
   meshConfig:
     enablePrometheusMerge: false
