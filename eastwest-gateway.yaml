@@ -4,7 +4,6 @@ metadata:
   name: istio-eastwestgateway
   namespace: istio-system
 spec:
-  hub: novinrepo:8082/docker/istio
   profile: empty
   components:
     ingressGateways:
