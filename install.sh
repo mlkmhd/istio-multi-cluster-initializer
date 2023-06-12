@@ -2,7 +2,7 @@
 
 set -xe
 
-export TOTAL_CLUSTERS=4
+export TOTAL_CLUSTERS=$1
 
 mkdir -p tmp
 
